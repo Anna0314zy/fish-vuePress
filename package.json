@@ -1,0 +1,15 @@
+{
+  "name": "vuepress-zy",
+  "version": "1.0.0",
+  "description": "个人网站",
+  "main": "index.js",
+  "author": "zy",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.7.1"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+}
