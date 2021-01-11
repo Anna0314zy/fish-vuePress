@@ -2,7 +2,12 @@ module.exports = {
   title: "小鱼儿的博客",
   base: "/fish-vuePress/",
   description: "专注 Node.js 技术栈分享，从前端到Node.js再到数据库",
+  markdown: {
+    extractHeaders: ["h2", "h3", "h4"]
+  },
   themeConfig: {
+    sidebarDepth: 2,
+    displayAllHeaders: false, // 默认值：false
     sidebar: {
       "/node-zy/": [
         ["", "node目录"],
@@ -11,9 +16,10 @@ module.exports = {
       ],
       "/node/": [
         ["", "node目录"],
+        ["promise.md", "深度了解promise"],
         ["what.md", "node.js究竟是什么"],
         ["event_loop.md", "node事件循环"],
-        // ["path", "作为前端也需要知道的路径知识"],
+        ["util.md", "node-模块util"],
 
         ["path.md", "node核心模块-path"],
         ["module_fs.md", "node核心模块-fs"],
@@ -30,6 +36,8 @@ module.exports = {
 
       "/webframe/": [
         ["", "前端"],
+        ["javascript/promise.md", "深度了解promise"],
+        ["es6/questions.md", "常见面试题"],
         {
           title: "css",
           name: "css",
@@ -46,10 +54,11 @@ module.exports = {
           collabsable: false,
           children: [
             ["javascript/", "目录"],
+            // ["javascript/promise.md", "深度了解promise"],
             ["javascript/datatype", "数据类型]面试常问javascript数据类型"],
             ["javascript/scoped", "[作用域]作用域于作用域链"],
             ["javascript/closure", "javascript中的闭包这一篇就够了"],
-            ["javascript/higherFunc", "[高阶函数]高阶函数详解与实战训练"],
+            // ["javascript/higherFunc", "[高阶函数]高阶函数详解与实战训练"],
             ["javascript/copy", "[赋值拷贝]js中赋值•浅拷贝•深拷贝"],
             ["javascript/prototype", "javascript中原型链"],
             ["javascript/this", "如何答一道惊艳面试官的数组去重问题？"],
@@ -64,6 +73,8 @@ module.exports = {
           collabsable: false,
           children: [
             ["es6/", "目录"],
+            ["es6/decorator.md", "装饰器"],
+            ["es6/ejs.md", "模板引擎实现"],
             ["es6/classInherit", "类与继承"],
             ["es6/promise", "ES6 promise"],
             ["es6/async-await", "async和await讲解"]
@@ -85,7 +96,8 @@ module.exports = {
             ["tool/vuepressBlog", "vuepress搭建个人博客"],
             ["tool/chrome", "chrome常用插件及日常问题"],
             ["tool/node-versions", "node以前版本"],
-            ["tool/shell", "我常用的前端提效 shell 命令"]
+            ["tool/shell", "我常用的前端提效 shell 命令"],
+            ["tool/markdown", "编写文档常用的语法"]
           ]
         }
       ],
@@ -102,9 +114,11 @@ module.exports = {
       "/interview/": [
         ["css", "面试题-CSS篇"],
         ["js10", "面试题-JS篇"],
+          ["questions.md", "面试题收录"],
         ["unique", "如何答一道惊艳面试官的数组去重问题？"],
         ["rewriteJs", "手写代码[`编程`]"],
-        ["vue", "vue篇"]
+        ["vue", "vue篇"],
+          ["project", "项目实战篇"]
       ]
     },
     nav: [

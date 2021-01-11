@@ -1,6 +1,7 @@
 
 
 ## node必知必会系列
+- [深度了解promise](../webframe/javascript/promise.md)
 - [node.js究竟是什么](what.md)
 - [node事件循环](event_loop.md)
 - [node核心模块-path](path.md)
