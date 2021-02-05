@@ -231,7 +231,194 @@ export default {
 };
 
 ```
-##
+## 级联组件 el-cascader
+::: tip
+回显值得关键必须要把需要回显的都写到options里面，
+且最后一项要加上leaf:true,表示无下级了才可以回显；
+这里写死，实际要根绝接口返回的需要回显的数据，来递归循环到结果，赋值给这里；
+:::
+一：实现思路
+定位原因：懒加载的级联下拉框无法回显是因为，只绑定了model的值，没有options的数据支撑的话，获取不到节点的内容导致；
+
+方案：拿到选中的项的时候，用这些值去递归循环获取相应的节点的一些属性，赋值给options，然后注意最后一个节点的leaf属性一定要有且是true了才可以回显；
+
+ 
+
+回到顶部
+二：绑定了options还是没有回显的可能原因
+2.1 赋值options的格式不对；
+
+2.2 赋值的option里面最后一项没有加上 leaf:true,导致插件以为还有下级所以无法回显；
+
+2.3 赋值的id数据类型和实际不一致，如果model里面的是字符串，option里面的id也要转换成字符串；
+
+2.4 options整个数据必须是响应式的数据 
+```vue
+<template>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <el-cascader
+            ref="cascaderHandle"
+      :props="test_props"
+      :options="test_options"
+      v-model="test_model"
+      @change="change"
+    ></el-cascader>
+  </div>
+</template>
+
+<script>
+// import HelloWorld from "./components/HelloWorld.vue";
+export default {
+  name: "App",
+  components: {
+    // HelloWorld,
+  },
+  data() {
+    let id2 = 2;
+
+    return {
+      test_options: [
+        //回显值得关键必须要把需要回显的都写到options里面，且最后一项要加上leaf:true,表示无下级了才可以回显；这里写死，实际要根绝接口返回的需要回显的数据，来递归循环到结果，赋值给这里；
+        {
+          value: "选项1",
+          label: "选项1",
+          leaf: false,//true 表示肯定没有下级了
+          children: [], //如果可能有下级 给个[] 直接给leaf:true代表没下级了
+          // children: [{ value: "选项3", label: "选项3", leaf: true }],
+        },
+        {
+          value: "选项2",
+          label: "选项2",
+        },
+      ],
+      test_model: ["选项1","选项3"], //模拟后台取到的默认值，这里是单选
+      test_props: {
+        checkStrictly: true,
+        lazy: true,
+        lazyLoad(node, resolve) {
+          const { level } = node;
+          if (level === 2) resolve();
+          setTimeout(() => {
+            const nodes = Array.from({ length: 8 }).map(() => {
+              ++id2;
+              return {
+                value: `选项${id2}`,
+                label: `选项${id2}`,
+                leaf: level >= 1,
+              };
+            });
+            // 通过调用resolve将子节点数据返回，通知组件数据加载完成
+            resolve(nodes);
+          }, 1000);
+        },
+      },
+    };
+  },
+    mounted() {
+      //点击文字的时候 让左边的按钮事件执行
+      document.querySelectorAll('.el-cascader-panel').forEach(el => {
+          el.onclick = function (e) {
+               e = e || window.event;
+              let target = e.target || e.srcElement;
+              console.dir(target, 'target');
+              if (target.className === 'el-cascader-node__label') {
+                  if (target.previousElementSibling) target.previousElementSibling.click()
+              }
+          }
+      })
+    },
+    methods:{
+      change(val) {
+         if (val.length === 2) this.$refs.cascaderHandle.dropDownVisible = false
+      }
+    }
+};
+</script>
+
+<style>
+  
+</style>
+
+```
+## el-select大数据渲染
+
+```vue
+<template>
+    <div class="content">
+         <el-select filterable v-model="choose" size="small" v-el-select-loadmore="loadMore(num)">
+             <el-option
+             v-for="(item, index) in list.slice(0, rangeNumber)" 
+             :key="index"
+             :label="item.label"
+             :value="item.value"></el-option>
+         </el-select>
+    </div>
+</template>
+ 
+<script>
+import Vue from "vue";
+Vue.directive(
+    'elSelectLoadmore', {
+        bind(el, binding) {
+            // 获取element-ui定义好的scroll盒子
+            const SELECTWRAP_DOM = el.querySelector('.el-select-dropdown .el-select-dropdown__wrap');
+            SELECTWRAP_DOM.addEventListener('scroll', function () {
+            
+                /**
+                * scrollHeight 获取元素内容高度(只读)
+                * scrollTop 获取或者设置元素的偏移值,常用于, 计算滚动条的位置, 当一个元素的容器没有产生垂直方向的滚动条, 那它的scrollTop的值默认为0.
+                * clientHeight 读取元素的可见高度(只读)
+                * 如果元素滚动到底, 下面等式返回true, 没有则返回false:
+                * ele.scrollHeight - ele.scrollTop === ele.clientHeight;
+                */
+                const condition = this.scrollHeight - this.scrollTop <= this.clientHeight;
+                if (condition) binding.value()
+            });
+        }
+    }
+)
+export default {
+    data() {
+        return {
+           list: [],
+           choose: "",
+           rangeNumber: 10,
+           num: 5
+        }
+    },
+    created(){
+       this.getList()
+    },
+    methods: {
+        getList(){
+            for(let i = 0; i < 100; i++){
+                this.list.push({
+                   label: "menu" + i,
+                   value: "menu" + i
+                })
+            }//测试数据10万条数据, 这里数据多少条无所谓,list.slice(0, rangeNumber)方法只会默认加载初始的10条数据
+        },
+        loadMore(rangeNumber){
+            //n是默认初始展示的条数会在渲染的时候就可以获取,具体可以打log查看
+            //if(n < 8) this.rangeNumber = 10 //elementui下拉超过7条才会出滚动条,如果初始不出滚动条无法触发loadMore方法
+            return () => this.rangeNumber += rangeNumber //每次滚动到底部可以新增条数  可自定义
+        },
+    }
+}
+</script>
+ 
+<style lang="stylus" scoped>
+.content{
+   padding: 24px 24px;
+   .el-input{
+       width: 400px;
+       margin: 20px;
+   }
+}
+</style>
+```
 ## 如何实现项目主题色
 
 方案一

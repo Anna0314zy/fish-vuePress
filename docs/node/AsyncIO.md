@@ -36,7 +36,7 @@ Libuv是一个高性能的，事件驱动的异步I/O库，它本身是由C语�
 
 经典libuv图(来源网上)
 
-(http://img.xiaogangzai.cn/AsyncIO_20200718_1.jpg)
+![](http://img.xiaogangzai.cn/AsyncIO_20200718_1.jpg)
 
 ### IOCP
 概念:输入输出完成端口（Input/Output Completion Port，IOCP）, 是支持多个同时发生的异步I/O操作的应用程序编程接口，在Windows NT的3.5版本以后，或AIX5版以后或Solaris第十版以后，开始支持。
@@ -64,7 +64,7 @@ libuv 目前使用了一个全局的线程池，所有的循环都可以往其�
 
 对比图中两段经典api代码(`server.listen`和`fs.open`，选择两种api的原因：网络 I/O 代表和文件 I/O 代表)和之前 libuv 图片，我们来一起理解异步I/O调用流程
 
-(http://img.xiaogangzai.cn/AsyncIO_20200718_2.jpg)
+![](http://img.xiaogangzai.cn/AsyncIO_20200718_2.jpg)
 上图展示了libuv细节的流程，图中代码很简单，包括2个部分：
 
 1. server.listen() 是用来创建 TCP server 时，通常放在最后一步执行的代码。主要指定服务器工作的端口以及回调函数。
@@ -85,11 +85,11 @@ libuv 目前使用了一个全局的线程池，所有的循环都可以往其�
 ### 事件循环
 不管是`server.listen`还是`fs.open`，他们在开启一个 node 服务(进程)的时候，Node会创建一个while(true)的循环，这个循环就是事件循环。每执行一次循环体的过程，我们称之为Tick。每个Tick的过程就是**查看是否有事件待处理**，如果有，就取出事件及其相关的回调函数。如果存在关联的回调函数，就执行。然后进入下一个循环，如果不再有事件处理，退出进程。
 
-(http://img.xiaogangzai.cn/AsyncIO_20200718_3.jpg)
+![](http://img.xiaogangzai.cn/AsyncIO_20200718_3.jpg)
 
 这里我们知道事件循环已经创建了，上面加粗字体查看**是否有事件待处理，去哪里查看？事件怎么进入事件循环的？什么情况会产生事件继续往下看**。
 ### 底层调用与事件产生
-(http://img.xiaogangzai.cn/AsyncIO_20200718_2.jpg)
+![](http://img.xiaogangzai.cn/AsyncIO_20200718_2.jpg)
 
 继续看这张图，讲解一下事件产生基本流程，（注意网络I/O和文件I/O会有一些不同）这里对c++代码调用简单提一下，有兴趣的小伙伴可以继续深入研究。
 #### File I/O
@@ -104,7 +104,7 @@ libuv 目前使用了一个全局的线程池，所有的循环都可以往其�
 > 看到这里，前面提到的**是否有事件待处理，去哪里查看？事件怎么进入事件循环的？**这两个问题是不是搞懂了。
 
 文字配上图。更清晰！
-(http://img.xiaogangzai.cn/AsyncIO_20200718_5.jpg)
+![](http://img.xiaogangzai.cn/AsyncIO_20200718_5.jpg)
 
 
 #### Network I/O
@@ -118,7 +118,7 @@ V8 engine 执行从 `server.listen()` 开始，调用 `builtin module Tcp_wrap` 
 `uv_io_start()`负载将 handle 插入到处理的`water queue`中。这样的好处是请求能够立即得到处理。中断处理机制里面的下半部分与数据处理操作相似，交由主线程去完成处理。
 
 
-(http://img.xiaogangzai.cn/leading.png)
+
 
 > 重要：虽然 libuv 的异步文件 I/O 操作是通过线程池实现的，但是网络 I/O 总是在单线程中执行的，注意最后还是会把完成的内容作为事件加入事件循环，事件循环就和文件I/O相同了。
 
@@ -134,16 +134,6 @@ V8 engine 执行从 `server.listen()` 开始，调用 `builtin module Tcp_wrap` 
 看了文章前面的内容，Node 通过事件驱动的方式处理请求，无需为每个请求创建额外的对应线程，可以省掉**创建线程和销毁线程**的开销，同时操作系统在调度任务时因为线程较少，**上下文切换**的代价很低。这也是 Node.js 高性能之一
 
 > Nginx 目前也采用了和 Node 相同的事件驱动方式，有兴趣的也去了解下，不过 Nginx 采用 c 语言编写。
-
-
-### 关注我
-
-> 作者简介：koala，专注完整的 Node.js 技术栈分享，从 JavaScript 到 Node.js,再到后端数据库，祝您成为优秀的高级 Node.js 工程师。【程序员成长指北】作者，Github 博客开源项目 https://github.com/koala-coding/goodBlog
-
-- 欢迎加我微信【 ikoala520 】，拉你 进 **Node.js** 高级进阶群，长期交流学习...
-- 欢迎关注「程序员成长指北」,一个用心帮助你成长的公众号...
-(http://img.xiaogangzai.cn/leading.png)
-
 
 
 ## 参考 

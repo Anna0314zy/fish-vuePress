@@ -33,7 +33,37 @@ module.exports = {
         // ["APIGateway.md", "nodejs搭建一个API网关"],
         ["AsyncIO.md", "Node 与底层之间如何执行异步 I/O 调用"]
       ],
-
+      "/vue-quick/": [
+        ["vue-up-1", "进阶vue篇一"],
+        ["vue-up-2", "进阶vue篇二"],
+        ["vue-up-3", "进阶vue篇三"]
+      ],
+      "/node-quick/": [
+        ["promise", "promise原理手写"],
+        ["eventLoop", "异步&事件环"],
+        ["node", "node基本概念"],
+        ["node-modules", "node中的模块"],
+        ["npm", "npm常用命令"],
+        ["path.md", "node核心模块-path"],
+        ["buffer", "Buffer的应用"],
+        ["fs", "fs模块"],
+        ["stream", "stream模块"],
+        ["linkedList", "什么是链表"],
+        ["tree", "树"],
+        ["http", "HTTP核心概念"],
+        ["http-header", "HTTP中Header应用"],
+        ["Cookie", "Cookie/Session/JWT"],
+        ["express", "Express应用+原理"],
+        ["koa", "koa"],
+        ["node-loop", "node中的进程和线程"]
+      ],
+      "/js/": [
+          ["regexp", "正则"],
+          ["JS2", "js数据类型"],
+          ["JS3", "js底层原理的实现"],
+          ["math", "前端算法"],
+          ["modules", "其他"]
+      ],
       "/webframe/": [
         ["", "前端"],
         ["javascript/promise.md", "深度了解promise"],
@@ -114,16 +144,27 @@ module.exports = {
       "/interview/": [
         ["css", "面试题-CSS篇"],
         ["js10", "面试题-JS篇"],
-          ["questions.md", "面试题收录"],
+        ["questions.md", "面试题收录"],
         ["unique", "如何答一道惊艳面试官的数组去重问题？"],
         ["rewriteJs", "手写代码[`编程`]"],
         ["vue", "vue篇"],
-          ["project", "项目实战篇"]
-      ]
+        ["project", "项目实战篇"],
+          ["promise", "promise面试题"],
+          ["api", "api"],
+          ["1", "数据类型相等比较"]
+      ],
+      "/react/": []
     },
     nav: [
       { text: "主页", link: "/" },
-      { text: "小鱼儿", items: [{ text: "node", link: "/node-zy/" }] },
+      {
+        text: "小鱼儿",
+        items: [
+          { text: "快速掌握node", link: "/node-quick/" },
+          { text: "快速掌握vue", link: "/vue-quick/" },
+          { text: "前端基础", link: "/js/" }
+        ]
+      },
       { text: "node", link: "/node/" },
       {
         text: "前端",
@@ -133,9 +174,12 @@ module.exports = {
         //   { text: "css", link:"/web/css/"},
         //   ]
       },
+
+      { text: "快速掌握vue", link: "/vue-quick/" },
       { text: "数据库", link: "/database/" },
       { text: "android", link: "/android/" },
-      { text: "面试问题", link: "/interview/" }
+      { text: "面试问题", link: "/interview/" },
+      { text: "其他", link: "/react/" }
     ]
   }
 };
