@@ -215,6 +215,10 @@ js引擎线程 他和页面渲染时互斥
             Promise.resolve().then(()=>console.log('micro task2'))
         })
         button.click(); // click1() click2()
+// listener1
+// listener2
+// micro task1
+// micro task2
 </script>
 ```
 ### 6.定时器任务
@@ -232,6 +236,10 @@ js引擎线程 他和页面渲染时互斥
                 console.log('Promise2')
             })
         }, 0);
+// Promise1
+// setTimeout1
+// Promise2
+// setTimeout2
 </script>
 ```
 ### 7.任务执行面试题
@@ -254,5 +262,13 @@ promise.then(res => {
 })
 async (); 
 console.log(8);
+// 1
+// 6
+// 2
+// 3
+// 8
+// 7
+// 4
+// 5
 ```
 掌握Vue中nextTick原理

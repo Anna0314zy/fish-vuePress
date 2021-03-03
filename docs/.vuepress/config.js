@@ -153,7 +153,13 @@ module.exports = {
           ["api", "api"],
           ["1", "数据类型相等比较"]
       ],
-      "/react/": []
+      "/react/": [
+          ["react1", "前端面试宝点之react篇"],
+          ["react全家桶", "react全家桶"],
+      ],
+        "/webpack/": [
+            ["webpack原理", "webpack原理"],
+        ]
     },
     nav: [
       { text: "主页", link: "/" },
@@ -179,7 +185,8 @@ module.exports = {
       { text: "数据库", link: "/database/" },
       { text: "android", link: "/android/" },
       { text: "面试问题", link: "/interview/" },
-      { text: "其他", link: "/react/" }
+      { text: "react", link: "/react/" },
+        { text: "webpack", link: "/webpack/" }
     ]
   }
 };
