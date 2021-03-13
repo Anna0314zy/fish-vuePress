@@ -229,6 +229,7 @@ String.prototype.indexOf = function(s) {
 - **容错性**
 其实如果是非常难的问题，对你的竞争对手来说，也是难的，关键在于你所表达出的解决问题的思路，甚至通过表达解题思路的方向，以及你考虑问题的全面性，其实不仅仅这一道简单面试题，算法题是如此。我是**koala**，今天这篇先写这么多，一起加油。
 
+<div style="display:none">
 ## 参考文章
 [MDN中一些函数讲解](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/)
 
@@ -238,13 +239,6 @@ String.prototype.indexOf = function(s) {
 
 [排序算法学习总结](http://wiki.jikexueyuan.com/project/easy-learn-algorithm/fast-sort.html)
 
-
-
-### 关注我
-- 欢迎加我微信【coder_qi】，拉你进技术群，长期交流学习...
-- 欢迎关注「程序员成长指北」,一个用心帮助你成长的公众号...
-
-![](http://img.xiaogangzai.cn/leading.png)
 
 ### Node系列原创文章
 
@@ -261,3 +255,10 @@ String.prototype.indexOf = function(s) {
 
 [Node.js 高级进阶之 fs 文件模块学习
 ](https://juejin.im/post/5d3f1664e51d4561a34618c1)
+
+
+
+</div>
+
+
+

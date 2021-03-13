@@ -96,7 +96,7 @@ module.exports = {
             // ["javascript/higherFunc", "[高阶函数]高阶函数详解与实战训练"],
             ["javascript/copy", "[赋值拷贝]js中赋值•浅拷贝•深拷贝"],
             ["javascript/prototype", "javascript中原型链"],
-            ["javascript/this", "如何答一道惊艳面试官的数组去重问题？"],
+            ["javascript/this", "this的各种讲解"],
             ["javascript/exports", "exports和module.exports的区别"],
             ["javascript/recircleFun", "聊聊面试必考-递归思想与实战"],
             ["javascript/unique", "js中数组去重(面试如何回答)"]
@@ -188,15 +188,15 @@ module.exports = {
     },
     nav: [
       { text: "主页", link: "/" },
-      {
-        text: "小鱼儿",
-        items: [
-          { text: "快速掌握node", link: "/node-quick/" },
-          { text: "快速掌握vue", link: "/vue-quick/" }
-          // { text: "前端基础", link: "/js/" }
-        ]
-      },
-      { text: "node", link: "/node/" },
+      // {
+      //   text: "小鱼儿",
+      //   items: [
+      //     { text: "快速掌握node", link: "/node-quick/" },
+      //     { text: "快速掌握vue", link: "/vue-quick/" }
+      //     // { text: "前端基础", link: "/js/" }
+      //   ]
+      // },
+      { text: "node", link: "/node-quick/" },
       {
         text: "前端基础",
         link: "/webframe/"
