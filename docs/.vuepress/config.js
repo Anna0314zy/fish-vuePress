@@ -67,7 +67,12 @@ module.exports = {
       "/webframe/": [
         ["", "前端"],
         ["javascript/promise.md", "深度了解promise"],
-        ["es6/questions.md", "常见面试题"],
+          ["js/regexp", "正则"],
+          ["js/JS2", "js数据类型"],
+          // ["js/JS3", "js底层原理的实现"],
+          ["js/math", "前端算法"],
+          ["js/modules", "其他"],
+        // ["es6/questions.md", "常见面试题"],
         {
           title: "css",
           name: "css",
@@ -129,7 +134,27 @@ module.exports = {
             ["tool/shell", "我常用的前端提效 shell 命令"],
             ["tool/markdown", "编写文档常用的语法"]
           ]
-        }
+        },
+          {
+              title: "面试题",
+              name: "interview",
+              collabsable: false,
+              children: [
+                  ["interview/css", "面试题-CSS篇"],
+                  ["interview/js10", "面试题-JS篇"],
+                  // ["interview/questions.md", "面试题收录"],
+                  ["interview/unique", "如何答一道惊艳面试官的数组去重问题？"],
+                  ["interview/rewriteJs", "手写代码[`编程`]"],
+                  ["interview/vue", "vue篇"],
+                  ["interview/project", "项目实战篇"],
+                  ["interview/promise", "promise"],
+                  ["interview/api", "如何处理异步并发"],
+                  ["interview/JS3", "前端底层的实现"],
+                  ["interview/questions", "代码题"],
+                  ["interview/myself", "面试总结"],
+                  // ["1", "数据类型相等比较"]
+              ]
+          }
       ],
       "/database/": [
         ["choice", "SQL 和 NoSQL 的区别与选择"],
@@ -149,9 +174,9 @@ module.exports = {
         ["rewriteJs", "手写代码[`编程`]"],
         ["vue", "vue篇"],
         ["project", "项目实战篇"],
-          ["promise", "promise面试题"],
-          ["api", "api"],
-          ["1", "数据类型相等比较"]
+          ["promise", "promise"],
+          ["api", "如何处理异步并发"]
+          // ["1", "数据类型相等比较"]
       ],
       "/react/": [
           ["react1", "前端面试宝点之react篇"],
@@ -167,13 +192,13 @@ module.exports = {
         text: "小鱼儿",
         items: [
           { text: "快速掌握node", link: "/node-quick/" },
-          { text: "快速掌握vue", link: "/vue-quick/" },
-          { text: "前端基础", link: "/js/" }
+          { text: "快速掌握vue", link: "/vue-quick/" }
+          // { text: "前端基础", link: "/js/" }
         ]
       },
       { text: "node", link: "/node/" },
       {
-        text: "前端",
+        text: "前端基础",
         link: "/webframe/"
         // items: [
         //   { text: "html", link:"/web/html/"},
@@ -183,8 +208,8 @@ module.exports = {
 
       { text: "快速掌握vue", link: "/vue-quick/" },
       { text: "数据库", link: "/database/" },
-      { text: "android", link: "/android/" },
-      { text: "面试问题", link: "/interview/" },
+      // { text: "android", link: "/android/" },
+      // { text: "面试问题", link: "/interview/" },
       { text: "react", link: "/react/" },
         { text: "webpack", link: "/webpack/" }
     ]
