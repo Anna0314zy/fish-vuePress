@@ -308,7 +308,3 @@ function clone(target, map = new WeakMap()) {
 - 天明夜尽:https://juejin.im/post/5d1dab346fb9a07ec63b3249
 - code秘密花园:https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1 
 - 极客时间的递归学习
-
-加入我们一起学习吧！(加好友 coder_qi 进前端交流群学习)
-
-![](https://user-gold-cdn.xitu.io/2019/9/23/16d5b9254e7cb2e1?w=400&h=222&f=gif&s=100633)

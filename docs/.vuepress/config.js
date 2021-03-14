@@ -80,7 +80,8 @@ module.exports = {
           children: [
             ["css/", "目录"],
             ["css/1", "css常考面试题"],
-            ["css/render", "渲染树的原理你真的懂吗"]
+            ["css/render", "渲染树的原理你真的懂吗"],
+              ["css/css", "面试题-CSS篇"],
           ]
         },
         {
@@ -90,6 +91,7 @@ module.exports = {
           children: [
             ["javascript/", "目录"],
             // ["javascript/promise.md", "深度了解promise"],
+              ["javascript/js10", "面试题-JS篇"],
             ["javascript/datatype", "数据类型]面试常问javascript数据类型"],
             ["javascript/scoped", "[作用域]作用域于作用域链"],
             ["javascript/closure", "javascript中的闭包这一篇就够了"],
@@ -136,14 +138,14 @@ module.exports = {
           ]
         },
           {
-              title: "面试题",
+              title: "其他面试题",
               name: "interview",
               collabsable: false,
               children: [
-                  ["interview/css", "面试题-CSS篇"],
-                  ["interview/js10", "面试题-JS篇"],
+                  // ["interview/css", "面试题-CSS篇"],
+                  // ["interview/js10", "面试题-JS篇"],
                   // ["interview/questions.md", "面试题收录"],
-                  ["interview/unique", "如何答一道惊艳面试官的数组去重问题？"],
+                  // ["interview/unique", "如何答一道惊艳面试官的数组去重问题？"],
                   ["interview/rewriteJs", "手写代码[`编程`]"],
                   ["interview/vue", "vue篇"],
                   ["interview/project", "项目实战篇"],
@@ -167,7 +169,6 @@ module.exports = {
         ["detail-redis3", "详细学习redis_项目实战篇"]
       ],
       "/interview/": [
-        ["css", "面试题-CSS篇"],
         ["js10", "面试题-JS篇"],
         ["questions.md", "面试题收录"],
         ["unique", "如何答一道惊艳面试官的数组去重问题？"],
