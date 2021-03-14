@@ -185,6 +185,7 @@ module.exports = {
       ],
         "/webpack/": [
             ["webpack原理", "webpack原理"],
+            ["base", "webpack基础"],
         ]
     },
     nav: [
