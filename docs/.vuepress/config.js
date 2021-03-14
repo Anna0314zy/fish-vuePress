@@ -1,7 +1,7 @@
 module.exports = {
   title: "小鱼儿的博客",
   base: "/fish-vuePress/",
-  description: "专注 Node.js 技术栈分享，从前端到Node.js再到数据库",
+  description: "专注前端技术栈分享,从前端到Node.js再到数据库",
   markdown: {
     extractHeaders: ["h2", "h3", "h4"]
   },
